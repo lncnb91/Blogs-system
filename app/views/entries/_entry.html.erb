@@ -9,4 +9,16 @@
                                      data: { confirm: "You sure?" },
                                      title: entry.content %>
   <% end %>
+  <% if entry.comments.any? %>
+    <ol class="comments">
+      <%= render entry.comments %>
+    </ol>
+  <% end %>
+  <%= form_for(@comment) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Comment here..." %>
+    </div>
+    <%= f.submit "Comment", class: "btn btn-primary" %>
+  <% end %>
 </li>

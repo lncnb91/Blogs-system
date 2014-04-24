@@ -4,6 +4,7 @@ BlogsSystem::Application.routes.draw do
       get :following, :followers
     end
   end
+  resources :comments, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   resources :entries, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
